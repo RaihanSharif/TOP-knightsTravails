@@ -14,17 +14,22 @@ function adjListBuilder(x, y, visited) {
   moves.forEach((coord) => {
     if (coord[0] > 0 && coord[0] < 8) {
       if (coord[1] > 0 && coord[1] < 8) {
-        ls.push(coord);
+        visited.forEach((elem) => {
+          if (coord[0] == elem[0] && coord[1] == elem[1]) {
+            console.log("already visited");
+          } else {
+            ls.push(coord);
+          }
+        });
       }
     }
   });
 
-  ls = ls.filter((elem) => !visited.includes(elem));
   return ls;
 }
 
-let a = adjList(0, 0, [1, 1]);
-let b = adjList(6, 5, [1, 1]);
+let a = adjListBuilder(0, 0, [[1, 1]]);
+let b = adjListBuilder(6, 5, [[7, 3]]);
 
 console.log(a);
 console.log(b);
