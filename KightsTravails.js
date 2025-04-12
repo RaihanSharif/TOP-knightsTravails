@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 function adjListBuilder(node) {
   let ls = [];
   const moves = [
@@ -9,11 +10,25 @@ function adjListBuilder(node) {
     [node[0] + 2, node[1] - 1],
     [node[0] - 2, node[1] + 1],
     [node[0] - 2, node[1] - 1],
+=======
+function adjListBuilder(x, y, visited) {
+  let ls = [];
+  moves = [
+    [x + 1, y + 2],
+    [x + 1, y - 2],
+    [x - 1, y + 2],
+    [x - 1, y - 2],
+    [x + 2, y + 1],
+    [x + 2, y - 1],
+    [x - 2, y + 1],
+    [x - 2, y - 1],
+>>>>>>> 0eff5d2 (creating a set of valid moves from a given position on the board. does not exclude visited nodes.)
   ];
 
   moves.forEach((coord) => {
     if (coord[0] > 0 && coord[0] < 8) {
       if (coord[1] > 0 && coord[1] < 8) {
+<<<<<<< HEAD
         ls.push(coord);
       }
     }
@@ -66,3 +81,24 @@ function knightMoves(start, target) {
 // console.log(b);
 knightMoves([3, 3], [4, 3]);
 knightMoves([6, 5], [4, 3]);
+=======
+        visited.forEach((elem) => {
+          if (coord[0] == elem[0] && coord[1] == elem[1]) {
+            console.log("already visited");
+          } else {
+            ls.push(coord);
+          }
+        });
+      }
+    }
+  });
+
+  return ls;
+}
+
+let a = adjListBuilder(0, 0, [[1, 1]]);
+let b = adjListBuilder(6, 5, [[7, 3]]);
+
+console.log(a);
+console.log(b);
+>>>>>>> 0eff5d2 (creating a set of valid moves from a given position on the board. does not exclude visited nodes.)
