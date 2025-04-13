@@ -37,12 +37,46 @@ function isCoordsEqual(first, second) {
 }
 
 function knightMOves(start, target) {
-  const visited = [];
-  let parent = null;
+  const visited = new Set(); // use JSON stringify to store coords as unique strings
   const path = [];
-  const queue = [];
+  const queue = []; // breadth-first search queue
+  let parent = {};
+  // store the parent of each node as a dictionary
+  // where the node is the key, and the value is the parent
+  parent[JSON.stringify(start)] = null;
 
-  while (queue.length != 0) {}
+  queue.push(start);
+  while (queue.length != 0) {
+    // make the first item of the queue the current node
+    // check if this node is the target node. If it is,
+    // add it to the path and return the path.
+    // else, add current node to visited.
+    // get the adjacency list for the node.
+
+    let currentNode = queue.shift(); // removes first elem from queue
+    // if coordinate is found, put it in the path array.
+    // then go through the parent dict, and fetch parent of the current node
+    // make parent the current node, then put the parent into the path
+    // repeat until all nodes in path.
+    if (isCoordsEqual(currentNode, target)) {
+      while (currentNode !== null) {
+        path.unshift(currentNode);
+        currentNode = parent[JSON.stringify(currentNode)];
+      }
+      console.log(`You mnade it in ${path.length - 1} moves`);
+      path.forEach((node) => console.log(node));
+    }
+
+    // if the current Node is the target node
+    // then push it to the front of the path array
+    // get its parent from the parent dict, make the parent the current node
+    // keep doing this until all nodes are added
+    // output the path string
+
+    // get all the valid adjacent nodes for a given node
+    // if a node is not visited already, then push it to the BFS queue
+    // set current node as its parent
+  }
 }
 
 console.log(a);
