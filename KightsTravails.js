@@ -31,5 +31,19 @@ function adjListBuilder(x, y, visited) {
 let a = adjListBuilder(0, 0, [[1, 1]]);
 let b = adjListBuilder(6, 5, [[7, 3]]);
 
+// TODO: need a function to check equality between coordinates
+function isCoordsEqual(first, second) {
+  return first[0] === second[0] && first[1] == second[1];
+}
+
+function knightMOves(start, target) {
+  const visited = [];
+  let parent = null;
+  const path = [];
+  const queue = [];
+
+  while (queue.length != 0) {}
+}
+
 console.log(a);
 console.log(b);
